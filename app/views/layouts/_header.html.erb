@@ -1,0 +1,17 @@
+<header class = "navbar navbar-fixed-top">
+  <div class = "container">
+    <div class = "navbar-brand">
+      <%= link_to "SLAcKk", root_path %></div>
+    <nav>
+      <ul class = "nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+         <% if !@current_user.nil? %>
+           <li><%= link_to 'Log Out', sign_out_path, method: :delete %><li>
+      </ul>
+       <% else %>
+         <li><%= link_to "Log In", sign_in_path %>
+         </nav>
+       <% end %>
+       </ul>
+   </header>
+ </div>
