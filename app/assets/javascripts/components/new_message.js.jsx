@@ -11,8 +11,8 @@ var NewMessage = React.createClass({
         }
       }
 
-      $.post("/api/chatroom/" + this.props.id + "/messages.json", messageJSON).then(function(json){
-        component.refs.body.getDOMNode().value = "";
+      $.post("/api/chatrooms/" + this.props.chatroom.id +  "/messages.json", messageJSON).then(function(json){
+        component.refs.content.getDOMNode().value = "";
 
       });
 
@@ -21,7 +21,7 @@ var NewMessage = React.createClass({
 
 
     render: function(){
-      return <div className="message_form">
+      return <div className="new_message">
         <input type="text" ref="content"></input>
         <button onClick={this.handleButtonClick}>Submit</button>
       </div>;

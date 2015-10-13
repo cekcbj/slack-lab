@@ -1,28 +1,43 @@
-var ChatRoom = React.createClass({
+var Chatroom = React.createClass({
+
   getInitialState(){
     return {
+      chatroom: {
+        id: this.props.chatroom.id,
       messages: []
+      }
     }
   },
 
-  componentDidMount(){
+
+  fetchMessages(){
     var component = this;
-    fetch("/api/chatroom/" + this.props.id + "/messages.json").then(function(response){
-      response.json().then(function(data){
-        component.setState({messages: data.messages});
+
+    $.getJSON("/api/chatrooms/" + this.state.chatroom.id + ".json")
+      .done(function(json){
+        component.setState({chatroom: json.chatroom});
       })
-    })
+   },
+
+  componentDidMount(){
+    this.fetchMessages();
+    this.messageInterval = setInterval(this.fetchMessages, 3000);
   },
+
+  componentWillUnmount(){
+    clearInterval(messageInterval);
+  },
+
 
   render: function() {
     return <div>
       <div className="messages">
-        {this.state.messages.map(function(message){
+        {this.state.chatroom.messages.map(function(message){
           return <Message message={message}/>
         })}
       </div>
 
-      <NewMessage />
+      <NewMessage chatroom={this.state.chatroom}/>
 
     </div>;
   }

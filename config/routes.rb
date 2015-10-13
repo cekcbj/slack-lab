@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get 'dashboard/index'
 
-  root 'dashboard#index'
+  root 'chatrooms#index'
 
   get 'signup' => 'users#new', as: :sign_up
 
@@ -19,7 +18,7 @@ Rails.application.routes.draw do
 
 
  namespace :api do
-    get "chatroom/:id/messages" => 'messages#index'
+    get "chatrooms/:id" => 'chatrooms#show'
     post "chatrooms/:id/messages" => 'messages#create', as: :messages
   end
 

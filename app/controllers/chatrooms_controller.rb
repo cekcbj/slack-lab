@@ -1,5 +1,6 @@
 class ChatroomsController < ApplicationController
 
+
   def new
   end
 
@@ -9,7 +10,7 @@ class ChatroomsController < ApplicationController
 
   def show
     @chatrooms = Chatroom.all
-    @chatroom= Chatroom.find(params[:id])
+    @chatroom = Chatroom.find(params[:id])
   end
 
 end

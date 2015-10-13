@@ -1,9 +1,0 @@
-<div class="pull left">
-  <div class="sidebar">
-    <ul>
-    <% @chatrooms.each do |room| %>
-      <li><%= link_to room.name.upcase, chatroom_path(id: room.id)%></li>
-    <% end %>
-  </ul>
-  </div>
-</div>

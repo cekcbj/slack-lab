@@ -5,7 +5,7 @@
     <nav>
       <ul class = "nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-         <% if !@current_user.nil? %>
+          <% if logged_in? %>
            <li><%= link_to 'Log Out', sign_out_path, method: :delete %><li>
       </ul>
        <% else %>
